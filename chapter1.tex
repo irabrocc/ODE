@@ -1,0 +1,62 @@
+% 声明为子文件，指定主文件
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+\pagestyle{plain}
+\setcounter{chapter}{0}
+
+\chapter{First order equations. Different solution methods for different types of equations}
+\label{chap:chapter1}
+\subsection{Introduction}
+A differential equation is an equation that involves a function and its derivatives, where the unknown is the function itself. 
+
+\begin{example}
+    \begin{enumerate}
+        \item A falling object. The equation 
+    \begin{equation}\label{eq:dropping}
+        m\dfrac{dv}{dt} = mg - \gamma v
+    \end{equation}
+    describes the velocity $v$ of an object falling in the atmosphere near the sea level. Here, $m$ represents the mass of the object, $g$ is the acceleration due to gravity, and $\gamma$ is known as the drag coefficient. Always remind that $v = v(t)$. Here, $v$ is unknown and $m,g,r$ is known data.  
+    \item Mice and owls. The equation 
+    \begin{equation}
+        \dfrac{dp}{dt} = rp - k
+    \end{equation}
+    describes the population of mice that inhabitate a rural area, in presence of owls. Here, $r$ represents the growth of the mice population and $k$ represents the rate of predation by owls. Here $p = p(t)$ is unknown and $r,k$ is known data. 
+    \item Heat equation. The equation 
+    \begin{equation}
+        \dfrac{dT}{dt} - d \Delta T = 0
+    \end{equation}
+    represents the conduction of heat in an isotropic and homogeneous medium. Here, $\Delta$ is called the Laplace operator, and it's given by 
+    \begin{equation}
+        \Delta T = \dfrac{\partial^2 T}{\partial x^2} + \dfrac{\partial^2 T}{\partial y^2} + \dfrac{\partial^2 T}{\partial z^2}
+    \end{equation}
+    \end{enumerate}
+\end{example}
+\par Often, in practice, mathematical models given by differential equations are supplemented by associated conditions. For example, if we drop and object from certain height, then the phenomena is governed by the equation \eqref{eq:dropping} and the initial condition $v(0) = 0$. A very simple model for heat conduction in a long thin bar is given by 
+\begin{equation}
+    T'' = 0, \ \ \ \ 0 < x < L
+\end{equation}
+If we know the temperature of the extremes of the bar, we supplement this equation with the conditions $T(0) = a$ and $T(L) = b$. Differential problems supplemented with initial conditions are called initial value problems and those supplemented with boundary conditions are called boundary value problems. 
+\par \noindent \textbf{Example} A problem of heat conduction in a 3-dimensional ball $D \subseteq \mathbb{R}^3$ is: 
+\begin{equation}
+    \begin{cases}
+        \dfrac{\partial T}{\partial t} - \Delta T = 0, \ \ \ \ &x \in D, t > 0 \\
+        T(x,0) = f(x), \ \ \ \ &x \in D (initial\ condition)\\
+        T(x,t) = g(x,t), \ \ \ \ &x \in \partial D, t > 0 (boundary\ condition)
+    \end{cases}
+\end{equation}
+\subsection{Classification of differential equations}
+\begin{enumerate}
+    \item Ordinary and partial differential equations. If the unknown depends on one variable, we say that the equation is an ordinary differential equation (ODE). If, instead, the unknown depends on several variables, we say that the equation is a partial differential equation (PDE). 
+    \item Scalar differential equations and systems of differential equations. If we have a problem with one equation in one unknown, we say that the equation is scalar. If we have a problem with several equations in several unknowns, we say that the equation is a system of differential equations. For example, the system$$ 
+    \begin{cases}
+        \dfrac{dx}{dt} = a x - \alpha x y \\
+        \dfrac{dy}{dt} = -cy + \delta x y
+    \end{cases}
+    $$
+    where $x, y$ are unknowns and $a, \alpha, c, \delta$ are known data, is a system of differential equations which is known as the Lotka-Volterra system and describes the interaction between preys and predators. 
+    \item The order of an ODE is the order of the highest derivative of the unknown. 
+    \item Linear and non-linear equations. An ODE $F(t, u, u', u'', \ldots, u^{(n)}) = 0$ is said to be linear if $F$ is linear with respect to the last $(n - 1)$ variables. Otherwise, the equation is called non-linear. 
+\end{enumerate}
+
+\end{document}
