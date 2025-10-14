@@ -59,4 +59,68 @@ If we know the temperature of the extremes of the bar, we supplement this equati
     \item Linear and non-linear equations. An ODE $F(t, u, u', u'', \ldots, u^{(n)}) = 0$ is said to be linear if $F$ is linear with respect to the last $(n - 1)$ variables. Otherwise, the equation is called non-linear. 
 \end{enumerate}
 
+\subsection{Well-posed problems}
+Recall our first example \eqref{eq:dropping}. 
+$$
+\begin{cases}
+    m \dfrac{dv}{dt} = mg - \gamma v, & t>0\\
+    v(0) = v_0.
+\end{cases}
+$$
+
+\par We say that our initial value problem for an ODE is well-posed if the following three conditions are satisfied:
+\begin{enumerate}
+    \item Existence: there exists a solution $v = v(t)$ that satisfies the equation and the initial condition. 
+    \item Uniqueness: there is no other solution that satisfies the equation and the initial condition. 
+    \item Stability: Small changes in the initial condition $v_0$ produce only small changes in the solution $v(t)$. 
+\end{enumerate}
+
+\begin{example}
+    \begin{enumerate}
+        \item Consider the initial value problem given by 
+        $$\begin{cases}
+            \dfrac{dy}{dt} = y & t > 0 \\
+            y(0) = y_0
+        \end{cases}$$
+        If we integrate the equation, we find that $y(t) = Ce^t$. Also from the initial condition we have that $y(0) = C = y_0$. Thus, the solution of the initial value problem is $y(t) = y_0 e^t$. It can be also shown that this solution is unique in a course later. 
+        \par Assume, for example, that $y_0 = 0$. So, the solution is the trivial solution $y(t) = 0$. Additionally, consider a "small" change in the initial data. 
+        $$
+        \begin{cases}
+            \dfrac{dy}{dt} = y & t > 0 \\
+            y(0) = \epsilon
+        \end{cases}
+        $$ 
+        for some $0< \epsilon << 1$. Now the solution is $y(t) = \epsilon e^t$. In order to the problem has the stability condition we must have that $y_{\epsilon}$ is closed to $y$ for all $t > 0$. In other words, that $|y(t) - y_{\epsilon}(t)| \delta \forall t > 0$ for some small $\delta > 0$. But this is not true since 
+        $$
+        |y(t) - y_{\epsilon}(t)| = |\epsilon e^t| = \epsilon e^t \to \infty \ as \ t \to \infty.
+        $$
+        Thus, the problem does not satisfy the stability condition, so it's ill-posed(not well-posed). 
+        \item Consider the initial value problem 
+        $$
+        \begin{cases}
+            \dfrac{dy}{dt} = \sqrt{|y|} & t > 0 \\
+            y(0) = 0
+        \end{cases}
+        $$ 
+        This problem admits the trivial solution $y(t) = 0$. But it also admits the solution $y(t) = \dfrac{t^2}{4}$. Moreover, any function of the form 
+        $$
+        g(t) = \begin{cases}
+            0 & t \in [0, c] \\
+            \dfrac{(t-c)^2}{4} & t \in [c, \infty)
+        \end{cases}
+        $$
+        is also a solution, for any $c \geq 0$. Since the problem has infinitely many solutions, it is ill-posed. 
+    \end{enumerate}
+\end{example}
+
+\subsection{Some solution methods for first-order equations}
+\par A first-order ODE is an equation of the form: 
+\begin{equation}
+    \dfrac{dy}{dt} = f(t,y)
+\end{equation}
+A linear first order ODE is one of the form: 
+\begin{equation}
+    \dfrac{dy}{dt} + a(t)y = b(t) \leadsto \dfrac{d \tilde{y}}{dt} = \tilde{b}(t)
+\end{equation}
+
 \end{document}
