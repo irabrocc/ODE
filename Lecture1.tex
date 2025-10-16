@@ -118,9 +118,68 @@ $$
 \begin{equation}
     \dfrac{dy}{dt} = f(t,y)
 \end{equation}
-A linear first order ODE is one of the form: 
-\begin{equation}
+\par A linear first order ODE is one of the form: 
+\begin{equation}\label{eq:linearfirstODE}
+    \dfrac{dy}{dt} + a(t)y = b(t)
+\end{equation}
+Assume that $a(t)$ and $b(t)$ are continuous functions in $\mathbb{R}$. If we can find an equivalent equation of equation \ref{eq:linearfirstODE}, that is 
+\begin{equation}\label{eq:simpleODE}
     \dfrac{dy}{dt} + a(t)y = b(t) \leadsto \dfrac{d \tilde{y}}{dt} = \tilde{b}(t)
 \end{equation}
-
+we are done, because we can solve \ref{eq:simpleODE} by integration. The idea is to look first for a function $\mu$ such that 
+\begin{equation}\label{eq:qua}
+    \mu (t) (\dfrac{dy}{dt} + a(t)y) = \mu(t) b(t)
+\end{equation}
+can be easily written in the form \ref{eq:simpleODE}. 
+ The core of the integrating factor method is the following observation 
+\begin{equation}
+    \dfrac{d}{dt}(\mu(t) y(t)) = \mu(t) \dfrac{dy}{dt} + \mu'(t) y(t)
+\end{equation} 
+ Then if $\mu$ satisfies 
+\begin{equation}
+    \dfrac{d\mu }{dt} = a(t) \mu 
+\end{equation}
+then equation \ref{eq:qua} reduces to 
+\begin{equation}
+    \dfrac{d(\mu(t)y)}{dt} = \mu(t) b(t)
+\end{equation}
+Additionally, we can find $\mu$ by solving $\dfrac{d\mu}{dt} = a(t) \mu$. 
+ Assume that this equation admits a solution $\mu$ which satisfies $\mu(t) > 0$ for all $t$. Then 
+\begin{equation}
+    \dfrac{1}{\mu} \dfrac{d\mu}{dt}  = a(t)
+\end{equation}
+Integrating both sides, we get 
+\begin{equation}
+    \int \dfrac{d}{dt} \ln(|\mu(t)|) dt = \int a(t) dt
+\end{equation}
+which implies 
+\begin{equation}
+    \ln(|\mu(t)|) = \int a(t) dt + C
+\end{equation}
+or equivalently 
+\begin{equation}
+    |\mu(t)| = e^C e^{\int a(t) dt}
+\end{equation}
+ Since we assume that $\mu(t) > 0$ for all $t$, we get that 
+\begin{equation}
+    \mu(t) = C e^{\int a(t) dt}
+\end{equation}
+for some $C > 0$. We can choose $C = 1$. So we have 
+\begin{equation}
+    \mu(t) = e^{\int a(t) dt}
+\end{equation}
+ It's easy to veryfy that $\mu$ is a solution to $\dfrac{du}{dt} = a(t) u$. 
+ Then, equation \ref{eq:qua} can be written as 
+\begin{equation}
+    \dfrac{d}{dt} (e^{\int a(t) dt} y) = e^{\int a(t) dt} b(t)
+\end{equation}
+Integrating with respect to $t$ yields 
+\begin{equation}
+    e^{\int a(t) dt} y = \int e^{\int a(t) dt} b(t) dt + C
+\end{equation}
+Therefore, 
+\begin{equation}\label{eq:finalForm}
+    y(t) = e^{-\int a(t) dt} (\int e^{\int a(t) dt} b(t) dt + C)
+\end{equation}
+In summary, we deduced that if \ref{eq:linearfirstODE} has a solution, then the solution must be a function in the form \ref{eq:finalForm}. So, formula (10) is called the general solution to the linear first-order ODE \ref{eq:linearfirstODE}. Here $\mu$ is called an integrating factor. 
 \end{document}
